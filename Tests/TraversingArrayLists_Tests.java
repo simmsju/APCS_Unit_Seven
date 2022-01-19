@@ -14,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TraversingArrayLists_Tests {
 
-    /*
+/*
     @Test
     @Order(1)
     public void getStatesTest() throws FileNotFoundException {
-        System.setIn(new FileInputStream("data_files/states.txt"));
+        System.setIn(new FileInputStream("files/states.txt"));
         ArrayList<String> actual = TraversingArrayLists.getStates();
         ArrayList<String> expected = new ArrayList<>();
         expected.add("Rhode Island");
@@ -33,8 +33,8 @@ public class TraversingArrayLists_Tests {
         assertEquals(expected, actual);
 
     }
-*/
-    /*
+
+
     @Test
     @Order(2)
     public void stateListTest() {
@@ -51,20 +51,32 @@ public class TraversingArrayLists_Tests {
 
      */
 
-    /*
+
     @Test
     @Order(3)
     public void largestSmallestTest() throws FileNotFoundException{
-        Scanner input = new Scanner(new File("data_files/numbers2.txt"));
+        Scanner input = new Scanner(new File("files/numbers2.txt"));
         ArrayList<Integer> expected = new ArrayList<>();
         while (input.hasNext()) {
             expected.add(input.nextInt());
         }
-        ArrayList<Integer> actual = TraversingArrayLists.largestAndSmallest();
+        ArrayList<Integer> actual = TraversingArrayLists.largestAndSmallest("files/numbers.txt");
         assertEquals(expected, actual);
     }
 
-     */
+    @Test
+    public void largestSmallestTestReverse() throws FileNotFoundException{
+        Scanner input = new Scanner(new File("files/numbers2.txt"));
+        ArrayList<Integer> expected = new ArrayList<>();
+        while (input.hasNext()) {
+            expected.add(input.nextInt());
+        }
+        ArrayList<Integer> actual = TraversingArrayLists.largestAndSmallest("files/numbers3.txt");
+        assertEquals(expected, actual);
+    }
+
+
+
 
 
 
