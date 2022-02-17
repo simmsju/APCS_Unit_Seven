@@ -8,12 +8,14 @@ import java.util.Scanner;
 public class ScrabbleHelper {
     private ArrayList<String> wordsList = new ArrayList<>();
 
+
     public ScrabbleHelper() throws FileNotFoundException {
         Scanner s = new Scanner(new File("files/word_list.txt"));
         while (s.hasNext()) {
             wordsList.add(s.next());
         }
-    }
+    } //Constructor(fills array list "wordList" with all the words in word_list.txt)
+
 
     public boolean foundWord(String word) {
         int high = wordsList.size() - 1;
@@ -30,17 +32,19 @@ public class ScrabbleHelper {
             }
         }
         return false;
-    }
+    } //Uses binary search to see if an inputted word is in "wordsList"
+
 
     public ArrayList<String> findMatches(String fragment) {
         ArrayList<String> matches = new ArrayList<>();
         for (String word : wordsList) {
-            if (word.indexOf(fragment)>= 0) {
+            if (word.contains(fragment)) {
                 matches.add(word);
             }
         }
         return matches;
-    }
+    } //Takes a String and finds all the words in "wordsList" that have that string in them
+
 
     public void sortWords(ArrayList<String> list) {
         String temp;
@@ -54,7 +58,8 @@ public class ScrabbleHelper {
             }
             list.set(count + 1, temp);
         }
-    }
+    } //Uses insertion sort to sort an array of Strings by length(shortest->longest)
+
 
     public ArrayList<String> findUsable(String letters) {
         ArrayList<Character> hand = new ArrayList<>();
@@ -82,7 +87,8 @@ public class ScrabbleHelper {
             }
         }
         return possibleWords;
-    }
+    } //Takes inputted letter and returns a list of words that can be made with those letters(linear search)
+
 
     public int getScores(String word) {
         int[] scores = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
@@ -91,7 +97,8 @@ public class ScrabbleHelper {
             score += scores[word.charAt(i) - 'a'];
         }
         return score;
-    }
+    } //Gets the scrabble score of a word
+
 
     public void sortByScores(ArrayList<String> list) {
         for (int i = 0; i < list.size() - 1; i++) {
@@ -105,14 +112,11 @@ public class ScrabbleHelper {
             list.set(i, list.get(smallest));
             list.set(smallest, temp);
         }
-    }
+    } //Uses selection to sort a list of String by their scrabble score(least->greatest)
+
 
     public ArrayList<String> getWordsList() {
         return wordsList;
-    }
-
-    public static void main(String[] args) throws FileNotFoundException{
-
-    }
+    } //returns "wordsList"
 }
 
